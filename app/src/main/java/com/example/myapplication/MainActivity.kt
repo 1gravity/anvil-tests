@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
 
         DaggerAppComponent.create().apply {
             feature().run()
+            clazz().feature.run()
         }
 
         enableEdgeToEdge()
