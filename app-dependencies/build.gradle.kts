@@ -36,11 +36,9 @@ android {
 
 dependencies {
     implementation(project(":library1-api"))
-    implementation(project(":library1-impl"))
     api(project(":library1-binding"))
 
     implementation(project(":library2-api"))
-    implementation(project(":library2-impl"))
     api(project(":library2-binding"))
 
     kapt(libs.dagger.compiler)
