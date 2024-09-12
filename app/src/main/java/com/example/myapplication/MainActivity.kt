@@ -7,14 +7,24 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+
+//    @Inject
+//    lateinit var feature: Feature
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        DaggerAppComponent.create().appMergeComponentFactory().create().apply {
+            feature1().run()
+            feature2().run()
+        }
         DaggerAppComponent.create().apply {
-            dependency.run()
-            feature.run()
+            inject(this@MainActivity)
+//            dependency.run()
+//            feature.run()
         }
 
+//        feature.run()
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
