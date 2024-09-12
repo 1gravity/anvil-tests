@@ -1,22 +1,15 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    kotlin("kapt")
     alias(libs.plugins.anvil)
 }
 
 android {
-    namespace = "com.example.myapplication"
+    namespace = "com.example.library"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.myapplication"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -38,16 +31,13 @@ android {
 }
 
 dependencies {
-//    implementation(project(":app-dependencies"))
     implementation(project(":library-api"))
-    implementation(project(":library-binding"))
-
-    kapt(libs.dagger.compiler)
-    implementation(libs.dagger)
+    compileOnly(libs.dagger)
 
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
+    implementation(libs.javax.inject)
+}
+
+anvil {
+    generateDaggerFactories.set(true)
 }

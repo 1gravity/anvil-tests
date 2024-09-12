@@ -11,8 +11,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         DaggerAppComponent.create().apply {
-            feature().run()
-            clazz().feature.run()
+            dependency.run()
+            feature.run()
         }
 
         enableEdgeToEdge()

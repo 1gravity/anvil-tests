@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.dependencies
 
 import com.example.library.Dependency
 import com.example.library.Feature
@@ -7,7 +7,6 @@ import javax.inject.Singleton
 
 @MergeComponent(Singleton::class)
 interface AppComponent {
-    val dependency: Dependency
-    val feature: Feature
+    fun feature() : Feature
+    fun dependency() : Dependency
 }
-//interface AppComponent : DependencyComponent

@@ -21,4 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "My Application"
 include(":app")
-include(":library")
+include(":library-impl")
+include(":library-api")
+include(":library-binding")
+include(":app-dependencies")

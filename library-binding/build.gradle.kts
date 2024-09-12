@@ -5,11 +5,14 @@ plugins {
 }
 
 android {
-    namespace = "com.example.library"
+    namespace = "com.example.library_binding"
     compileSdk = 34
 
     defaultConfig {
         minSdk = 24
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -31,15 +34,11 @@ android {
 }
 
 dependencies {
-    compileOnly(libs.dagger)
+    implementation(project(":library-api"))
+    implementation(project(":library-impl"))
 
+    compileOnly(libs.dagger)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.javax.inject)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }
 
 anvil {
