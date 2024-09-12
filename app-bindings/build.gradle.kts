@@ -2,10 +2,11 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.anvil)
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
-    namespace = "com.example.library_binding"
+    namespace = "com.example.app_dependencies"
     compileSdk = 34
 
     defaultConfig {
@@ -15,15 +16,6 @@ android {
         consumerProguardFiles("consumer-rules.pro")
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -37,10 +29,13 @@ dependencies {
     implementation(project(":library1-api"))
     implementation(project(":library1-impl"))
 
-    compileOnly(libs.dagger)
-    implementation(libs.androidx.core.ktx)
-}
+    implementation(project(":library2-api"))
+    implementation(project(":library2-impl"))
+    
+    kapt(libs.dagger.compiler)
+    implementation(libs.dagger)
 
-anvil {
-    generateDaggerFactories.set(true)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
 }

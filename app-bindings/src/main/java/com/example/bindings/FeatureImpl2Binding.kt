@@ -1,5 +1,8 @@
-package com.example.library
+package com.example.bindings
 
+import com.example.library.Dependency2
+import com.example.library.Feature2
+import com.example.library.Feature2Impl
 import com.squareup.anvil.annotations.ContributesBinding
 import javax.inject.Inject
 import javax.inject.Singleton

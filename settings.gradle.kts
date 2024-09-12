@@ -21,7 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "My Application"
 include(":app")
-include(":app-dependencies")
+include(":app-bindings")
 
 include("library1-api")
 project(":library1-api").projectDir = file("./libs/library1/api")
