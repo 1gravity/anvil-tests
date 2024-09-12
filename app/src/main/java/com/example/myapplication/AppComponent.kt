@@ -1,17 +1,19 @@
 package com.example.myapplication
 
-import com.example.dependencies.AppSubComponent
-import com.squareup.anvil.annotations.ContributesTo
+import com.example.library.Dependency1
+import com.example.library.Dependency2
+import com.example.library.Feature1
+import com.example.library.Feature2
 import com.squareup.anvil.annotations.MergeComponent
-import dagger.Module
+import javax.inject.Singleton
 
-@ContributesTo(String::class)
-@Module(subcomponents = [AppSubComponent::class])
-interface AppMergeModule
-
-@MergeComponent(String::class)
+@MergeComponent(Singleton::class)
 interface AppComponent {
-    fun appMergeComponentFactory() : AppSubComponent.Factory
+    fun feature1() : Feature1
+    fun dependency1() : Dependency1
+
+    fun feature2() : Feature2
+    fun dependency2() : Dependency2
 
     fun inject(mainActivity: MainActivity)
 }

@@ -38,11 +38,11 @@ android {
 }
 
 dependencies {
-    implementation(project(":app-dependencies"))
     implementation(project(":library1-api"))
+    implementation(project(":library1-binding"))
+
     implementation(project(":library2-api"))
-    //    implementation(project(":library-impl"))
-//    implementation(project(":library-binding"))
+    implementation(project(":library2-binding"))
 
     kapt(libs.dagger.compiler)
     implementation(libs.dagger)
